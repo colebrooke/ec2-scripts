@@ -23,7 +23,7 @@ read SELECTED_REGION
 echo ""
 
 aws ec2 describe-instances	--profile $PROFILE \
-				--query 'Reservations[].Instances[].[PrivateIpAddress,InstanceId,Tags[?Key==`Name`].Value[]]' \
+				--query 'Reservations[].Instances[].[InstanceId,InstanceType,PrivateIpAddress,Tags[?Key==`Name`].Value[]]' \
 				--filters Name=instance-state-name,Values=running \
 				--output=text --region $SELECTED_REGION \
 				| sed 's/None$/None\n/' | sed '$!N;s/\n/ /'
