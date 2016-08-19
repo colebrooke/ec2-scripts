@@ -23,7 +23,7 @@ Options:
 #
 #       List all running EC2 instances in all regions, atempt to use all available AWS connection credentials:
 #       ./list-ec2.sh
-```sh
+```
 
 
 Example output:
@@ -37,5 +37,5 @@ i-09731f640b05d19b2    	t2.medium      	10.12.35.86 L-XD2-DEV-DOCKER-ENV2
 i-00e31927b3d1bc8cf    	t2.micro       	10.12.31.59 L-XD1-DEV-orientdb
 i-02df1b72a41af78f4    	t2.medium      	10.12.31.4 L-XD1-DEV-mongox
 local:~/ec2-scripts>
-```sh
+```
 
