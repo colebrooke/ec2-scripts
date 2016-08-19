@@ -6,7 +6,27 @@ This is a set of scripts to help running a fleet of VMs in AWS EC2.
 
 List running EC2 instances, within a certain region, using a certain AWS account profile.
 
-Example output / usage:
+Options:
+
+```sh
+#       OPTIONS
+#
+#       -p      Optional. Set desired AWS credentials profile. If not given, script will use ALL profiles.
+#               Note: to set up a new profile use "aws configure --profile"
+#
+#       -r      Optional. Set desired AWS region. If not given, the script will use ALL regions.
+#
+#       EXAMPLE
+#
+#       List all running EC2 instances in us-east-1 region, using myprofile AWS connection credentials:
+#       ./list-ec2.sh -p myprofile -r us-east-1
+#
+#       List all running EC2 instances in all regions, atempt to use all available AWS connection credentials:
+#       ./list-ec2.sh
+```sh
+
+
+Example output:
 
 ```sh
 local:~/ec2-scripts> ./list-ec2.sh my-profile eu-west-1
