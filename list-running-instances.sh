@@ -2,7 +2,7 @@
 
 # quick script to show EC2 instances running in one AWS region (just the name tags!)
 
-type aws >/dev/null 2>&1 || { echo >&2 "The aws cli is required to rung this script."; exit 1; }
+type aws >/dev/null 2>&1 || { echo >&2 "The aws cli is required to run this script."; exit 1; }
 
 AVAILABLE_PROFILES=$(cat ~/.aws/config | grep profile | cut -d' ' -f2 | tr -d '[]')
 echo "Avilable profiles:"
