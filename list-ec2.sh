@@ -4,11 +4,14 @@
 
 type aws >/dev/null 2>&1 || { echo >&2 "The aws cli is required to run this script."; exit 1; }
 
+REGION=""
+PROFILE=""
+
 while getopts ":p:r:" OPT
 do
 	case $OPT in
 		p)
-			PROFIE=$OPTARG
+			PROFILE=$OPTARG
 			PROFILE_SET="true"
 			;;
 
@@ -47,7 +50,6 @@ if [ ! -z $PROFILE ] && [ ! -z $REGION ]; then
 
 # just profile argument supplied...
 elif [ ! -z $PROFILE ]; then
-
 	REGIONS=$(GetAvailableRegions)
 	for REGION in ${REGIONS[*]}; do
 		ListInstances $PROFILE $REGION
@@ -55,9 +57,9 @@ elif [ ! -z $PROFILE ]; then
 
 # just region argument supplied...
 elif [ ! -z $REGION ]; then
-
 	PROFILES=$(GetAvailableProfiles)
 	for PROFILE in ${PROFILES[*]}; do
+		echo $PROFILE
 		ListInstances $PROFILE $REGION
 	done
 
