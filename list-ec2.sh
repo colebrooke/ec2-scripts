@@ -30,6 +30,9 @@
 # check for aws command line utilities
 type aws >/dev/null 2>&1 || { echo >&2 "The aws cli is required to run this script."; exit 1; }
 
+#TODO: determine if local environment variables have been set for AWS keys
+#      e.g. if [ ! -z $AWS_ACCESS_KEY_ID ] && [ ! -z $AWS_SECRET_ACCESS_KEY ]; then echo 'set'; else echo 'notset'; fi
+
 REGION=""
 PROFILE=""
 
@@ -38,12 +41,14 @@ do
 	case $OPT in
 		p)
 			PROFILE=$OPTARG
-			PROFILE_SET="true"
 			;;
 
 		r)
 			REGION=$OPTARG
-			REGION_SET="true"
+			;;
+		v)
+			#TODO: set more verbose output when required
+			VERBOSE="true"
 			;;
 	esac
 done
@@ -94,6 +99,7 @@ else
 	PROFILES=$(GetAvailableProfiles)
 	REGIONS=$(GetAvailableRegions)
 	for PROFILE in ${PROFILES[*]}; do
+		
 	        for REGION in ${REGIONS[*]}; do
 	                ListInstances $PROFILE $REGION
         	done
