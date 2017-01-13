@@ -68,7 +68,7 @@ function ListInstances () {
 	PROFILE=$1
 	REGION=$2
 	aws ec2 describe-instances --profile $PROFILE \
-                                --query 'Reservations[].Instances[].[InstanceId,InstanceType,PrivateIpAddress,Tags[?Key==`Name`].Value[]]' \
+                                --query 'Reservations[].Instances[].[InstanceId,InstanceType,Placement.AvailabilityZone,PrivateIpAddress,Tags[?Key==`Name`].Value[]]' \
                                 --filters Name=instance-state-name,Values=running \
                                 --output=text --region $REGION \
                                 | sed 's/None$/None\n/' | sed '$!N;s/\n/ /'
