@@ -1,6 +1,6 @@
 # ec2-scripts
 
-This is a set of scripts to help running a fleet of VMs in AWS EC2.
+This is a set of scripts to help running a fleet of VMs in AWS EC2, and using S3 too :)
 
 ### list-ec2.sh
 
@@ -38,4 +38,34 @@ i-00e31927b3d1bc8cf    	t2.micro       	10.12.31.59 L-XD1-DEV-orientdb
 i-02df1b72a41af78f4    	t2.medium      	10.12.31.4 L-XD1-DEV-mongox
 local:~/ec2-scripts>
 ```
+
+### ls-s3-sizes.sh
+
+OK, not strictly an EC2, but handy if you're using S3 Object based storage and you want to calculate file sizes quickly, without traversing every object in the filestore.  The data comes from cloudwatch, and can be a little out of date verses what's actually in the bucket.
+
+Usage:
+
+```sh
+# Usage:
+#       ./ls-s3-sizes.sh
+#
+# TODO: Could be further parameterised depending on usage requirements.
+
+PROFILE="default" # update to relect the Credentials profile you'd like to use, typicaly in ~/.aws/credentials
+REGION="eu-west-1" # specify a region
+STORAGE_CLASS="StandardIAStorage" # a storage class is required.  Either "StandardStorage" or "StandardIAStorage" for infrequent access
+SHOW_ZERO_SIZE_BUCKETS="false"
+```
+
+Example output:
+
+```sh
+local:~> ./ls-s3-sizes.sh
+.20GB - my-first-bucket-001
+3.31GB - my-other-bucket-002
+1.00GB - some-other-bucket-008
+4.51GB - GRAND TOTAL
+local:~>
+```
+
 
