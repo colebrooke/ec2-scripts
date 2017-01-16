@@ -41,7 +41,7 @@ local:~/ec2-scripts>
 
 ### ls-s3-sizes.sh
 
-OK, not strictly an EC2, but handy if you're using S3 Object based storage and you want to calculate file sizes quickly, without traversing every object in the filestore.  The data comes from cloudwatch, and can be a little out of date verses what's actually in the bucket.
+OK, not strictly an EC2 related script, but handy if you're using S3 Object based storage and you want to calculate file sizes quickly, without traversing every object in the filestore.  The data comes from cloudwatch, and can be a little out of date verses what's actually in the bucket.
 
 Usage:
 
